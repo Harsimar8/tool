@@ -24,10 +24,17 @@ function toggleSection(header) {
 function selectOption(button, name) {
 
     const section = button.closest(".control-section");
+    const selected = button.classList.contains("selected");
 
-    section
-        .querySelectorAll(".tool-button.selected")
+    section.querySelectorAll(".tool-button.selected")
         .forEach(btn => btn.classList.remove("selected"));
+
+    // Clicking the already-selected button = deselect
+    if (selected) {
+        hideNotification();
+        setStatus(name + " deselected");
+        return;
+    }
 
     button.classList.add("selected");
 
@@ -40,18 +47,27 @@ function selectOption(button, name) {
    BRUSH MODE
 ===================================================== */
 
+
 function selectBrushMode(button) {
+
+    const selected = button.classList.contains("selected");
 
     document
         .querySelectorAll(".mode-button")
         .forEach(btn => btn.classList.remove("selected"));
+
+    if (selected) {
+        hideNotification();
+        setStatus(button.innerText.trim() + " deselected");
+        return;
+    }
 
     button.classList.add("selected");
 
     const name = button.innerText.trim();
 
     showNotification(name);
-    setStatus(name);
+    setStatus(name + " selected");
 }
 
 
@@ -191,22 +207,39 @@ let selectedSymbol = null;
 
 function selectSymbol(button, name) {
 
+    const selected = button.classList.contains("selected");
+
     document
         .querySelectorAll(".symbol-button")
         .forEach(btn => btn.classList.remove("selected"));
 
-    button.classList.add("selected");
+    if (selected) {
+        selectedSymbol = null;
+        hideNotification();
+        setStatus(name + " deselected");
+        return;
+    }
 
+    button.classList.add("selected");
     selectedSymbol = name;
 
     showNotification(name);
     setStatus(name + " selected");
 }
 
-
 /* =====================================================
    CENTER NOTIFICATION
 ===================================================== */
+
+function hideNotification() {
+    const notification =
+        document.getElementById("toolNotification");
+
+    if (notification) {
+        notification.classList.remove("show");
+    }
+}
+
 
 function showNotification(name) {
 
