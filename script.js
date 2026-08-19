@@ -3,54 +3,133 @@ import ms from "milsymbol";
 /* =====================================================
    MILITARY SYMBOLS
 ===================================================== */
-
 const symbolVariants = {
 
     Radar: [
+
         {
             name: "Ground Surveillance Radar",
-            sidc: "SFGPUCR----F"
+            sidc: "10005000001103000800"
         },
+
         {
             name: "Early Warning Radar",
-            sidc: "SFGPUCA----F"
+            sidc: "10005000001103001600"
         },
+
         {
             name: "Fire Control Radar",
-            sidc: "SFGPUCF----F"
+            sidc: "10005000001103001700"
+        },
+
+        {
+            name: "Air Defense Radar",
+            sidc: "10005000001103000100"
         }
+
     ],
+
 
     Tank: [
+
         {
-            name: "Main Battle Tank",
-            sidc: "SFGPUM----F"
+            name: "Tank",
+            sidc: "10001500001202000000"
+        },
+
+        {
+            name: "Light Tank",
+            sidc: "10001500001202010000"
+        },
+
+        {
+            name: "Medium Tank",
+            sidc: "10001500001202020000"
+        },
+
+        {
+            name: "Heavy Tank",
+            sidc: "10001500001202030000"
         }
+
     ],
+
 
     Missile: [
+
+        {
+            name: "Missile",
+            sidc: "10000200001100000000"
+        },
+
         {
             name: "Surface-to-Surface Missile",
-            sidc: "SFGPUCS----F"
-        }
-    ],
+            sidc: "10000200001100000202"
+        },
 
-    SAM: [
         {
             name: "Surface-to-Air Missile",
-            sidc: "SFGPUC----F"
+            sidc: "10000200001100000201"
+        },
+
+        {
+            name: "Air-to-Surface Missile",
+            sidc: "10000200001100000102"
         }
+
     ],
 
+
+    SAM: [
+
+        {
+            name: "Surface-to-Air Missile",
+            sidc: "10000200001100000201"
+        },
+
+        {
+            name: "Short Range SAM",
+            sidc: "10001500001111010000"
+        },
+
+        {
+            name: "Medium Air Defense Missile Launcher",
+            sidc: "10001500001111040000"
+        },
+
+        {
+            name: "S-400 / SA-21",
+            sidc: "10001500001111030000"
+        }
+
+    ],
+
+
     Bomber: [
+
         {
             name: "Bomber",
-            sidc: "SFGPAA----F"
+            sidc: "10000100001101030000"
+        },
+
+        {
+            name: "Fighter-Bomber",
+            sidc: "10000100001101050000"
+        },
+
+        {
+            name: "Attack / Strike Aircraft",
+            sidc: "10000100001101020000"
+        },
+
+        {
+            name: "Reconnaissance Aircraft",
+            sidc: "10000100001101110000"
         }
+
     ]
 
 };
-
 function openSymbolPicker(event, category) {
 
     event.stopPropagation();
@@ -104,22 +183,48 @@ function openSymbolPicker(event, category) {
 
         button.onclick = function (e) {
 
-            e.stopPropagation();
+    e.stopPropagation();
 
-            document
-                .querySelectorAll(".symbol-subtype")
-                .forEach(btn => {
-                    btn.classList.remove("selected");
-                });
+    const alreadySelected =
+        button.classList.contains("selected");
 
-            button.classList.add("selected");
+    // Deselect all symbols first
+    document
+        .querySelectorAll(".symbol-subtype")
+        .forEach(btn => {
+            btn.classList.remove("selected");
+        });
 
-            console.log(
-                "Symbol selected:",
-                category,
-                variant.name
-            );
-        };
+    // Clicking the already-selected symbol = deselect
+    if (alreadySelected) {
+
+        hideNotification();
+
+        setStatus(
+            variant.name + " deselected"
+        );
+
+        return;
+    }
+
+    // Select this symbol
+    button.classList.add("selected");
+
+    // Show the same center notification
+    showNotification(
+        variant.name
+    );
+
+    setStatus(
+        variant.name + " selected"
+    );
+
+    console.log(
+        "Symbol selected:",
+        category,
+        variant.name
+    );
+};
 
         grid.appendChild(button);
 
@@ -203,6 +308,7 @@ let radius = 1500;
 let power = 2.0;
 let maxHeight = 499;
 let statusTimer;
+let selectedSymbol = null;
 
 
 /* =====================================================
