@@ -303,12 +303,12 @@ function createMilSymbol(sidc, size = 55) {
 /* =====================================================
    TERRAIN STATE
 ===================================================== */
-
 let radius = 1500;
 let power = 2.0;
 let maxHeight = 499;
+
 let statusTimer;
-let selectedSymbol = null;
+let notificationTimer;
 
 
 /* =====================================================
@@ -489,6 +489,13 @@ function toggleMask(event) {
 
 function performAction(action) {
 
+    // Actions are momentary, so remove selection
+    document
+        .querySelectorAll(".tool-button.selected, .mode-button.selected")
+        .forEach(btn => {
+            btn.classList.remove("selected");
+        });
+
     showNotification(action);
 
     setStatus(
@@ -529,9 +536,9 @@ function showNotification(name) {
 
     notification.classList.add("show");
 
-    clearTimeout(statusTimer);
+    clearTimeout(notificationTimer);
 
-    statusTimer = setTimeout(() => {
+    notificationTimer = setTimeout(() => {
         notification.classList.remove("show");
     }, 1500);
 }
