@@ -9,22 +9,22 @@ const symbolVariants = {
 
         {
             name: "Ground Surveillance Radar",
-            sidc: "10005000001103000800"
+            sidc: "10035000001103000800"
         },
 
         {
             name: "Early Warning Radar",
-            sidc: "10005000001103001600"
+            sidc: "10035000001103001600"
         },
 
         {
             name: "Fire Control Radar",
-            sidc: "10005000001103001700"
+            sidc: "10035000001103001700"
         },
 
         {
             name: "Air Defense Radar",
-            sidc: "10005000001103000100"
+            sidc: "10035000001103000100"
         }
 
     ],
@@ -34,22 +34,22 @@ const symbolVariants = {
 
         {
             name: "Tank",
-            sidc: "10001500001202000000"
+            sidc: "10031500001202000000"
         },
 
         {
             name: "Light Tank",
-            sidc: "10001500001202010000"
+            sidc: "10031500001202010000"
         },
 
         {
             name: "Medium Tank",
-            sidc: "10001500001202020000"
+            sidc: "10031500001202020000"
         },
 
         {
             name: "Heavy Tank",
-            sidc: "10001500001202030000"
+            sidc: "10031500001202030000"
         }
 
     ],
@@ -59,22 +59,22 @@ const symbolVariants = {
 
         {
             name: "Missile",
-            sidc: "10000200001100000000"
+            sidc: "10030200001100000000"
         },
 
         {
             name: "Surface-to-Surface Missile",
-            sidc: "10000200001100000202"
+            sidc: "10030200001100000202"
         },
 
         {
             name: "Surface-to-Air Missile",
-            sidc: "10000200001100000201"
+            sidc: "10030200001100000201"
         },
 
         {
             name: "Air-to-Surface Missile",
-            sidc: "10000200001100000102"
+            sidc: "10030200001100000102"
         }
 
     ],
@@ -84,22 +84,22 @@ const symbolVariants = {
 
         {
             name: "Surface-to-Air Missile",
-            sidc: "10000200001100000201"
+            sidc: "10030200001100000201"
         },
 
         {
             name: "Short Range SAM",
-            sidc: "10001500001111010000"
+            sidc: "10031500001111010000"
         },
 
         {
             name: "Medium Air Defense Missile Launcher",
-            sidc: "10001500001111040000"
+            sidc: "10031500001111040000"
         },
 
         {
             name: "S-400 / SA-21",
-            sidc: "10001500001111030000"
+            sidc: "10031500001111030000"
         }
 
     ],
@@ -109,22 +109,22 @@ const symbolVariants = {
 
         {
             name: "Bomber",
-            sidc: "10000100001101030000"
+            sidc: "10030100001101030000"
         },
 
         {
             name: "Fighter-Bomber",
-            sidc: "10000100001101050000"
+            sidc: "10030100001101050000"
         },
 
         {
             name: "Attack / Strike Aircraft",
-            sidc: "10000100001101020000"
+            sidc: "10030100001101020000"
         },
 
         {
             name: "Reconnaissance Aircraft",
-            sidc: "10000100001101110000"
+            sidc: "10030100001101110000"
         }
 
     ]
